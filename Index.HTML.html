@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawson Industries | Bespoke CAD Design & Managed Supply</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#1A3E31',
+                            light: '#255443',
+                            dark: '#10281F'
+                        },
+                        brass: {
+                            DEFAULT: '#C19A6B',
+                            light: '#D8B68A',
+                            dark: '#9E794B'
+                        },
+                        parchment: {
+                            DEFAULT: '#FDFDF7',
+                            dark: '#F3F3E6'
+                        },
+                        charcoal: {
+                            DEFAULT: '#2B2B2B',
+                            light: '#424242',
+                            muted: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom aesthetics for British heritage look */
+        body {
+            background-color: #FDFDF7;
+            color: #2B2B2B;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(193, 154, 107, 0.15);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D8B68A 0%, #C19A6B 50%, #9E794B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #C19A6B 0%, #B08859 100%);
+        }
+
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-parchment text-charcoal antialiased selection:bg-brass selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-forest text-parchment border-b border-brass/30 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                
+                <!-- Brand Title & Tagline -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <!-- Production Monogram Logo Image -->
+                    <div class="w-12 h-12 rounded-full border border-brass/50 bg-forest-dark flex items-center justify-center p-1 shadow-md group-hover:border-brass transition-colors overflow-hidden">
+                        <img src="monogram.png" alt="Dawson Industries Monogram" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'brand-font font-bold text-brass text-lg\'>DI</span>';">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="brand-font text-lg sm:text-xl font-bold tracking-widest text-parchment leading-tight group-hover:text-brass transition-colors">
+                            DAWSON INDUSTRIES
+                        </span>
+                        <span class="text-[10px] sm:text-xs font-medium tracking-wider text-brass uppercase font-inter">
+                            Bespoke CAD Design &amp; Managed Supply
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-inter font-semibold">
+                    <a href="#about" class="text-parchment/90 hover:text-brass transition-colors">About</a>
+                    <a href="#capabilities" class="text-parchment/90 hover:text-brass transition-colors">Capabilities</a>
+                    <a href="#sectors" class="text-parchment/90 hover:text-brass transition-colors">Sectors</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded bg-brass text-forest hover:bg-brass-light font-bold transition-all shadow-md">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-parchment hover:text-brass p-2 focus:outline-none" aria-label="Toggle Navigation Menu">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-forest-dark border-t border-brass/20 px-6 pt-4 pb-6 space-y-4 shadow-xl">
+            <a href="#about" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-parchment hover:text-brass py-2">About</a>
+            <a href="#capabilities" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-parchment hover:text-brass py-2">Capabilities</a>
+            <a href="#sectors" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-parchment hover:text-brass py-2">Sectors</a>
+            <a href="#contact" class="mobile-link block text-center text-sm font-bold uppercase tracking-wider bg-brass text-forest py-3 rounded shadow">
+                Contact Us
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-forest text-parchment py-24 sm:py-32 overflow-hidden border-b border-brass/30">
+        <!-- Background Decorative Pattern -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
+            <svg viewBox="0 0 500 500" class="w-[800px] h-[800px]" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="250" r="230" fill="none" stroke="#C19A6B" stroke-width="4"/>
+                <polygon points="250,30 440,140 440,360 250,470 60,360 60,140" fill="none" stroke="#C19A6B" stroke-width="3"/>
+                <circle cx="250" cy="250" r="120" fill="none" stroke="#C19A6B" stroke-width="2" stroke-dasharray="8 4"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brass/10 border border-brass/40 text-brass text-xs uppercase tracking-widest font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-brass animate-pulse"></span>
+                    <span>British Engineering Standards</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold heading-font leading-tight text-parchment">
+                    Aerospace Precision for <span class="gold-gradient-text italic font-serif">Rural &amp; Agricultural</span> Operations.
+                </h1>
+
+                <p class="text-base sm:text-xl text-parchment/85 leading-relaxed font-light">
+                    Bespoke 3D CAD modeling, stress analysis, and managed B2B manufacturing for high-wear countryside hardware.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 rounded bg-brass text-forest hover:bg-brass-light font-bold brand-font tracking-wider text-xs sm:text-sm transition-all shadow-lg">
+                        Request Technical Consultation
+                        <i class="fa-solid fa-arrow-right ml-3 text-xs"></i>
+                    </a>
+                    <a href="#capabilities" class="inline-flex items-center justify-center px-8 py-4 rounded border border-parchment/30 hover:border-brass text-parchment hover:text-brass brand-font tracking-wider text-xs sm:text-sm transition-all">
+                        Explore Capabilities
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 sm:py-28 bg-parchment relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Master Heraldic Crest Shield Frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-forest border-2 border-brass/40 rounded-2xl p-8 sm:p-10 shadow-2xl gold-border-glow text-center">
+                        <!-- Master Crest Image Link -->
+                        <div class="py-4 flex justify-center">
+                            <img src="crest.png" alt="Dawson Industries Master Crest" class="w-64 sm:w-72 h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/300x340/1A3E31/C19A6B?text=Master+Crest+(crest.png)';">
+                        </div>
+
+                        <h3 class="brand-font text-xl font-bold text-parchment tracking-wider uppercase mt-2">
+                            DAWSON INDUSTRIES
+                        </h3>
+                        <p class="text-xs text-brass font-semibold tracking-widest uppercase mt-1">
+                            Kent, United Kingdom
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">Heritage &amp; Engineering Excellence</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold heading-font text-forest">
+                            Robust British Standards for Modern Countryside Demand
+                        </h2>
+                    </div>
+
+                    <p class="text-charcoal-light text-base sm:text-lg leading-relaxed">
+                        Based in Herne Bay, Kent, <strong>Dawson Industries</strong> serves as a dedicated engineering design and component supply partner focused on delivering precision-engineered, long-lasting hardware to the agricultural and estate sectors.
+                    </p>
+
+                    <p class="text-charcoal-light text-base sm:text-lg leading-relaxed">
+                        We bridge the gap between traditional estate craftsmanship and modern aerospace-grade CAD engineering. By combining 3D parametric design with a managed network of high-precision UK manufacturers, we supply high-tensile components built to withstand extreme mechanical wear and environmental exposure.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-brass/20">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-bold heading-font text-forest">100%</span>
+                            <span class="text-xs text-charcoal-muted uppercase font-semibold tracking-wider">British Quality Standards</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-bold heading-font text-forest">Bespoke</span>
+                            <span class="text-xs text-charcoal-muted uppercase font-semibold tracking-wider">Managed B2B Manufacturing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="py-20 sm:py-28 bg-parchment-dark border-y border-brass/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">End-To-End Business Model</span>
+                <h2 class="text-3xl sm:text-4xl font-bold heading-font text-forest">Our Core Capabilities</h2>
+                <p class="text-charcoal-muted text-base">
+                    From initial reverse engineering to final quality check and direct site delivery.
+                </p>
+            </div>
+
+            <!-- 3 Capabilities Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                            <i class="fa-solid fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-forest mb-3">
+                            1. Bespoke CAD &amp; DfM Design
+                        </h3>
+                        <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                            Precision 3D parametric modeling, Finite Element Analysis (FEA) stress testing, and Design for Manufacturing (DfM) optimization to eliminate failure points.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-charcoal-muted space-y-2 pt-4 border-t border-brass/20 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> Reverse Engineering &amp; Digitization</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> Load &amp; Wear Stress Analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-forest mb-3">
+                            2. Managed Fabrication
+                        </h3>
+                        <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                            Full lifecycle procurement managing fiber laser cutting, multi-axis CNC milling, and certified high-tensile structural welding through verified B2B partners.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-charcoal-muted space-y-2 pt-4 border-t border-brass/20 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> High-Grade Stainless &amp; Alloys</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> Vetted UK Precision Fabricators</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font text-forest mb-3">
+                            3. Quality Assurance
+                        </h3>
+                        <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                            Strict material verification certificates, dimensional inspection, specialized anti-corrosion finishes, and white-glove direct delivery.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-charcoal-muted space-y-2 pt-4 border-t border-brass/20 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> Traceable Material Compliance</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brass mr-2"></i> Direct On-Site Delivery</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sectors Served Section -->
+    <section id="sectors" class="py-20 sm:py-28 bg-parchment">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">Tailored Applications</span>
+                <h2 class="text-3xl sm:text-4xl font-bold heading-font text-forest">Sectors Served</h2>
+                <p class="text-charcoal-muted text-base">
+                    Custom engineering solutions engineered specifically for high-stress rural machinery and hardware.
+                </p>
+            </div>
+
+            <!-- Sectors Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Sector 1 -->
+                <div class="bg-forest rounded-xl p-8 text-parchment border border-brass/30 shadow-lg flex flex-col justify-between min-h-[300px]">
+                    <div class="space-y-4">
+                        <div class="text-brass text-3xl">
+                            <i class="fa-solid fa-tractor"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold heading-font">Agricultural &amp; Estate Machinery</h3>
+                        <p class="text-parchment/80 text-sm leading-relaxed">
+                            Reinforced linkage hardware, heavy-duty wear brackets, structural implement mounts, and upgraded replacement parts for heavy field machinery.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brass/30 text-xs text-brass font-semibold uppercase tracking-wider">
+                        High-Wear Hardware
+                    </div>
+                </div>
+
+                <!-- Sector 2 -->
+                <div class="bg-forest rounded-xl p-8 text-parchment border border-brass/30 shadow-lg flex flex-col justify-between min-h-[300px]">
+                    <div class="space-y-4">
+                        <div class="text-brass text-3xl">
+                            <i class="fa-solid fa-horse-head"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold heading-font">Equestrian &amp; Horsebox Hardware Systems</h3>
+                        <p class="text-parchment/80 text-sm leading-relaxed">
+                            Bespoke partition latches, heavy spring-loaded ramp hinges, tie rings, and stainless steel internal safety barriers built for animal welfare and safety.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brass/30 text-xs text-brass font-semibold uppercase tracking-wider">
+                        Safety &amp; Precision Mechanics
+                    </div>
+                </div>
+
+                <!-- Sector 3 -->
+                <div class="bg-forest rounded-xl p-8 text-parchment border border-brass/30 shadow-lg flex flex-col justify-between min-h-[300px]">
+                    <div class="space-y-4">
+                        <div class="text-brass text-3xl">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold heading-font">Specialized Trailers &amp; Custom Towing Mounts</h3>
+                        <p class="text-parchment/80 text-sm leading-relaxed">
+                            Custom chassis brackets, heavy coupling mounts, reinforced drop-hinges, and high-tensile structural towing linkages for heavy transport.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-brass/30 text-xs text-brass font-semibold uppercase tracking-wider">
+                        Structural Towing Engineering
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 sm:py-28 bg-forest text-parchment relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                
+                <!-- Contact Information -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">Technical Consultations</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold heading-font text-parchment mt-2">
+                            Discuss Your Project Requirements
+                        </h2>
+                        <p class="text-parchment/80 text-sm mt-4 leading-relaxed">
+                            Connect directly with our engineering team in Kent for CAD feasibility assessments or custom component replacement quotes.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded bg-brass/10 border border-brass/30 flex items-center justify-center text-brass flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold heading-font text-sm text-brass">Location</h4>
+                                <p class="text-parchment/80 text-sm mt-0.5">Herne Bay, Kent, United Kingdom</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded bg-brass/10 border border-brass/30 flex items-center justify-center text-brass flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold heading-font text-sm text-brass">Direct Email</h4>
+                                <a href="mailto:info@dawsonindustries.co.uk" class="text-parchment/80 hover:text-brass text-sm mt-0.5 block transition-colors">
+                                    info@dawsonindustries.co.uk
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded bg-brass/10 border border-brass/30 flex items-center justify-center text-brass flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold heading-font text-sm text-brass">Social Platforms</h4>
+                                <div class="flex space-x-3 mt-2">
+                                    <a href="#" class="w-9 h-9 rounded bg-forest-light border border-brass/30 flex items-center justify-center text-parchment hover:text-brass hover:border-brass transition-all" aria-label="LinkedIn">
+                                        <i class="fa-brands fa-linkedin-in text-sm"></i>
+                                    </a>
+                                    <a href="#" class="w-9 h-9 rounded bg-forest-light border border-brass/30 flex items-center justify-center text-parchment hover:text-brass hover:border-brass transition-all" aria-label="Instagram">
+                                        <i class="fa-brands fa-instagram text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="bg-parchment text-charcoal p-8 sm:p-10 rounded-2xl shadow-2xl border border-brass/40 space-y-6">
+                        <h3 class="text-2xl font-bold heading-font text-forest mb-2">Technical Inquiry Form</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Full Name *</label>
+                                <input type="text" id="full-name" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Email Address *</label>
+                                <input type="email" id="email" required placeholder="e.g. john@estate.co.uk" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="+44 7123 456789" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Service Required *</label>
+                                <select id="service" required class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                                    <option value="" disabled selected>Select a Service</option>
+                                    <option value="Custom Component Design">Custom Component Design</option>
+                                    <option value="Part Replacement/Reverse Engineering">Part Replacement / Reverse Engineering</option>
+                                    <option value="General Inquiry">General Technical Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Message / Brief *</label>
+                            <textarea id="message" rows="4" required placeholder="Describe part specifications, load requirements, or failure points..." class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-forest text-parchment hover:bg-forest-light brand-font font-bold tracking-widest text-xs uppercase rounded shadow-lg transition-all border border-brass/40">
+                            Submit Consultation Request
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest-dark text-parchment py-12 border-t border-brass/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-brass/20 pb-8">
+                
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full border border-brass/50 flex items-center justify-center p-1 bg-forest overflow-hidden">
+                        <img src="monogram.png" alt="Dawson Industries Monogram" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'brand-font font-bold text-brass text-xs\'>DI</span>';">
+                    </div>
+                    <span class="brand-font text-base font-bold tracking-widest">DAWSON INDUSTRIES</span>
+                </div>
+
+                <div class="flex space-x-6 text-xs uppercase tracking-widest text-parchment/80 font-medium">
+                    <a href="#about" class="hover:text-brass transition-colors">About</a>
+                    <a href="#capabilities" class="hover:text-brass transition-colors">Capabilities</a>
+                    <a href="#sectors" class="hover:text-brass transition-colors">Sectors</a>
+                    <a href="#contact" class="hover:text-brass transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-parchment/60 gap-4">
+                <p>&copy; 2026 Dawson Industries. All Rights Reserved.</p>
+                <p>Herne Bay, Kent, UK</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div id="modal-overlay" class="fixed inset-0 bg-forest-dark/80 modal-blur z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="modal-box" class="bg-parchment rounded-2xl max-w-md w-full p-8 border-2 border-brass shadow-2xl relative text-center transform scale-95 transition-transform duration-300">
+            
+            <button id="modal-close" class="absolute top-4 right-4 text-charcoal-muted hover:text-forest text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Monogram Image -->
+            <div class="w-16 h-16 bg-forest/10 border border-brass/40 rounded-full flex items-center justify-center p-2 mx-auto mb-4 overflow-hidden">
+                <img src="monogram.png" alt="Dawson Industries Monogram" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-circle-check text-brass text-2xl\'></i>';">
+            </div>
+
+            <h3 class="text-2xl font-bold heading-font text-forest mb-2">Inquiry Received</h3>
+            <p class="text-xs uppercase tracking-widest text-brass font-bold brand-font mb-4">Dawson Industries Desk</p>
+
+            <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                Thank you for contacting Dawson Industries. Your project inquiry has been logged. Our engineering desk in Kent will review your details and respond within 24 business hours.
+            </p>
+
+            <button id="modal-ack-btn" class="w-full py-3 bg-forest text-parchment brand-font text-xs uppercase tracking-widest font-bold rounded hover:bg-forest-light transition-colors border border-brass/30">
+                Acknowledge
+            </button>
+        </div>
+    </div>
+
+    <!-- Client Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Drawer Logic
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // Contact Form & Modal Logic
+            const form = document.getElementById('contact-form');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalBox = document.getElementById('modal-box');
+            const modalClose = document.getElementById('modal-close');
+            const modalAckBtn = document.getElementById('modal-ack-btn');
+
+            function showModal() {
+                modalOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    modalOverlay.classList.remove('opacity-0');
+                    modalBox.classList.remove('scale-95');
+                    modalBox.classList.add('scale-100');
+                }, 10);
+            }
+
+            function hideModal() {
+                modalOverlay.classList.add('opacity-0');
+                modalBox.classList.remove('scale-100');
+                modalBox.classList.add('scale-95');
+                setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                }, 300);
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                showModal();
+                form.reset();
+            });
+
+            modalClose.addEventListener('click', hideModal);
+            modalAckBtn.addEventListener('click', hideModal);
+
+            modalOverlay.addEventListener('click', function (e) {
+                if (e.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
