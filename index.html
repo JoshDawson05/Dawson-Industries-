@@ -442,29 +442,37 @@
                 </div>
 
                 <!-- Contact Form -->
+                <!-- Contact Form -->
                 <div class="lg:col-span-7">
-                    <form id="contact-form" class="bg-parchment text-charcoal p-8 sm:p-10 rounded-2xl shadow-2xl border border-brass/40 space-y-6">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="bg-parchment text-charcoal p-8 sm:p-10 rounded-2xl shadow-2xl border border-brass/40 space-y-6">
+        
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="0582842e-17ce-47aa-b88a-44770b945a4b">
+        
+                        <!-- Subject Line for Emails -->
+                        <input type="hidden" name="subject" value="New Technical Inquiry - Dawson Industries">
+        
                         <h3 class="text-2xl font-bold heading-font text-forest mb-2">Technical Inquiry Form</h3>
-                        
+        
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label for="full-name" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Full Name *</label>
-                                <input type="text" id="full-name" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                                <input type="text" id="full-name" name="name" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
                             </div>
                             <div>
                                 <label for="email" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Email Address *</label>
-                                <input type="email" id="email" required placeholder="e.g. john@estate.co.uk" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                                <input type="email" id="email" name="email" required placeholder="e.g. john@estate.co.uk" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Phone Number</label>
-                                <input type="tel" id="phone" placeholder="+44 7123 456789" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                                <input type="tel" id="phone" name="phone" placeholder="+44 7123 456789" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
                             </div>
                             <div>
                                 <label for="service" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Service Required *</label>
-                                <select id="service" required class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
+                                <select id="service" name="service" required class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white">
                                     <option value="" disabled selected>Select a Service</option>
                                     <option value="Custom Component Design">Custom Component Design</option>
                                     <option value="Part Replacement/Reverse Engineering">Part Replacement / Reverse Engineering</option>
@@ -475,15 +483,15 @@
 
                         <div>
                             <label for="message" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Message / Brief *</label>
-                            <textarea id="message" rows="4" required placeholder="Describe part specifications, load requirements, or failure points..." class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white"></textarea>
+                            <textarea id="message" name="message" rows="4" required placeholder="Describe part specifications, load requirements, or failure points..." class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest text-sm bg-white"></textarea>
                         </div>
 
                         <button type="submit" class="w-full py-4 bg-forest text-parchment hover:bg-forest-light brand-font font-bold tracking-widest text-xs uppercase rounded shadow-lg transition-all border border-brass/40">
                             Submit Consultation Request
                         </button>
                     </form>
-                </div>
-
+                 </div>
+               
             </div>
         </div>
     </section>
@@ -596,8 +604,25 @@
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                showModal();
-                form.reset();
+    
+                const formData = new FormData(form);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showModal();
+                        form.reset();
+                    } else {
+                        alert('There was an issue sending your message. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    alert('Form submission error. Please check your internet connection.');
+                });
             });
 
             modalClose.addEventListener('click', hideModal);
