@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawson Supply Co. | Countryside Workwear & Technical Outdoor Apparel</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#1A3E31',
+                            light: '#255443',
+                            dark: '#10281F'
+                        },
+                        brass: {
+                            DEFAULT: '#C19A6B',
+                            light: '#D8B68A',
+                            dark: '#9E794B'
+                        },
+                        parchment: {
+                            DEFAULT: '#FDFDF7',
+                            dark: '#F3F3E6'
+                        },
+                        charcoal: {
+                            DEFAULT: '#2B2B2B',
+                            light: '#424242',
+                            muted: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFDF7;
+            color: #2B2B2B;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(193, 154, 107, 0.15);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D8B68A 0%, #C19A6B 50%, #9E794B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-parchment text-charcoal antialiased selection:bg-brass selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-forest text-parchment border-b border-brass/30 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                
+                <!-- Brand Title -->
+                <a href="../index.html" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full border border-brass/50 bg-parchment flex items-center justify-center p-1 shadow-md group-hover:border-brass transition-colors overflow-hidden">
+                        <img src="../monogram.png" alt="Dawson Supply Co. Monogram" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'brand-font font-bold text-brass text-lg\'>DS</span>';">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="brand-font text-lg sm:text-xl font-bold tracking-widest text-parchment leading-tight group-hover:text-brass transition-colors">
+                            DAWSON SUPPLY CO.
+                        </span>
+                        <span class="text-[10px] sm:text-xs font-medium tracking-wider text-brass uppercase font-inter">
+                            Countryside Workwear &amp; Outdoors
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-inter font-semibold">
+                    <a href="../index.html" class="text-parchment/90 hover:text-brass transition-colors"><i class="fa-solid fa-arrow-left mr-1"></i> Engineering Division</a>
+                    <a href="#workwear" class="text-parchment/90 hover:text-brass transition-colors">Workwear</a>
+                    <a href="#countryside" class="text-parchment/90 hover:text-brass transition-colors">Outdoors</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded bg-brass text-forest hover:bg-brass-light font-bold transition-all shadow-md">
+                        Enquire / Trade
+                    </a>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-forest text-parchment py-24 sm:py-32 overflow-hidden border-b border-brass/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brass/10 border border-brass/40 text-brass text-xs uppercase tracking-widest font-semibold">
+                    <span>British Weather Tested</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold heading-font leading-tight text-parchment">
+                    Purpose-Built <span class="gold-gradient-text italic font-serif inline-block px-1 pb-1">Workwear &amp; Countryside</span> Apparel.
+                </h1>
+
+                <p class="text-base sm:text-xl text-parchment/85 leading-relaxed font-light">
+                    Heavy-duty estate workwear, weatherproof outdoor gear, and durable British countryside apparel engineered for field, farm, and trade.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 rounded bg-brass text-forest hover:bg-brass-light font-bold brand-font tracking-wider text-xs sm:text-sm transition-all shadow-lg">
+                        Request Supply / Trade Catalog
+                        <i class="fa-solid fa-arrow-right ml-3 text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="workwear" class="py-20 sm:py-28 bg-parchment border-b border-brass/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">Our Ranges</span>
+                <h2 class="text-3xl sm:text-4xl font-bold heading-font text-forest">Apparel &amp; Gear Categories</h2>
+                <p class="text-charcoal-muted text-base">
+                    Built for endurance across rugged landscapes and active physical labor.
+                </p>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Category 1 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                    <h3 class="text-xl font-bold heading-font text-forest mb-3">Estate &amp; Field Workwear</h3>
+                    <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                        Abrasion-resistant trousers, reinforced work jackets, high-tensile safety boots, and heavy utility aprons built for daily farm and estate labor.
+                    </p>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold heading-font text-forest mb-3">Weatherproof Outdoor Gear</h3>
+                    <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                        Heavy-gauge wax jackets, waterproof field coats, thermal mid-layers, and breathable rain gear built to handle unpredictable British weather.
+                    </p>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="bg-white rounded-xl p-8 border-2 border-brass/30 shadow-md hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 rounded-lg bg-forest/10 border border-brass/40 flex items-center justify-center text-forest text-2xl mb-6">
+                        <i class="fa-solid fa-person-hiking"></i>
+                    </div>
+                    <h3 class="text-xl font-bold heading-font text-forest mb-3">British Countryside Clothing</h3>
+                    <p class="text-charcoal-light text-sm leading-relaxed mb-6">
+                        Traditional tweed gilets, hard-wearing wool knits, fleece-lined field vests, and durable accessories tailored for countryside heritage.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Supply Inquiry Form -->
+    <section id="contact" class="py-20 sm:py-28 bg-forest text-parchment relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brass font-bold brand-font">Supply Desk</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold heading-font text-parchment mt-2">
+                            Trade &amp; Individual Supply Inquiries
+                        </h2>
+                        <p class="text-parchment/80 text-sm mt-4 leading-relaxed">
+                            Contact our supply desk in Kent for catalog requests, trade account inquiries, or outfitting quotes for your estate team.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-parchment/80">
+                        <p><i class="fa-solid fa-location-dot text-brass mr-2"></i> Herne Bay, Kent, United Kingdom</p>
+                        <p><i class="fa-solid fa-envelope text-brass mr-2"></i> info@dawsonindustries.co.uk</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="lg:col-span-7">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="supply-form" class="bg-parchment text-charcoal p-8 sm:p-10 rounded-2xl shadow-2xl border border-brass/40 space-y-6">
+                        
+                        <input type="hidden" name="access_key" value="0582842e-17ce-47aa-b88a-44770b945a4b">
+                        <input type="hidden" name="subject" value="New Supply Co. Inquiry - Dawson Industries">
+
+                        <h3 class="text-2xl font-bold heading-font text-forest mb-2">Apparel &amp; Supply Inquiry</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Full Name *</label>
+                                <input type="text" id="full-name" name="name" required placeholder="e.g. John Smith" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest text-sm bg-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="e.g. john@estate.co.uk" class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest text-sm bg-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="interest" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Product Line Interest *</label>
+                            <select id="interest" name="product_interest" required class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest text-sm bg-white">
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="Workwear & Safety Gear">Estate & Field Workwear</option>
+                                <option value="Outdoor Weatherproof Gear">Outdoor Weatherproof Gear</option>
+                                <option value="Countryside Apparel">British Countryside Clothing</option>
+                                <option value="Bulk Trade Outfitting">Bulk Trade / Team Outfitting</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-charcoal-muted mb-2">Message / Requirements *</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Describe clothing quantities, sizing requirements, or outfitting needs..." class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-forest text-sm bg-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-forest text-parchment hover:bg-forest-light brand-font font-bold tracking-widest text-xs uppercase rounded shadow-lg transition-all border border-brass/40">
+                            Submit Supply Request
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest-dark text-parchment py-8 border-t border-brass/30 text-center text-xs text-parchment/60">
+        <p>&copy; 2026 Dawson Supply Co. | Dawson Industries. Herne Bay, Kent, UK</p>
+    </footer>
+
+</body>
+</html>
