@@ -313,6 +313,56 @@
         </div>
     </div>
 
+    <!-- Field Notes Journal Section -->
+    <section id="field-notes" class="py-16 sm:py-20 bg-forest-dark text-parchment border-t border-b border-brass/30 relative overflow-hidden">
+        <!-- Subtle Background Accent Line -->
+        <div class="absolute inset-0 bg-[radial-gradient(#C19A6B_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-forest border border-brass/40 rounded-2xl p-8 sm:p-12 shadow-2xl relative">
+            
+                <div class="text-center max-w-2xl mx-auto space-y-4">
+                
+                    <!-- Badge Tag -->
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-brass/10 border border-brass/30 text-brass text-[11px] font-bold uppercase tracking-widest brand-font">
+                        <i class="fa-solid fa-wheat-awn text-xs"></i> Field Notes
+                    </span>
+
+                    <!-- Title & Subtitle -->
+                    <h2 class="text-3xl sm:text-4xl font-bold heading-font text-parchment leading-tight">
+                        A Seasonal Journal of the Countryside
+                    </h2>
+
+                    <p class="text-sm sm:text-base text-parchment/80 font-light leading-relaxed">
+                        Subscribe to <strong class="text-brass font-medium">Field Notes</strong>—our curated digest featuring practical insights, seasonal observations, and updates gathered across the British countryside, farming operations, and equine industries.
+                    </p>
+
+                </div>
+
+                <!-- Subscription Input Box -->
+                <form id="field-notes-form" class="mt-8 max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-brass/70 text-xs">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <input type="email" name="email" required placeholder="Enter your email address..." class="w-full pl-10 pr-4 py-3.5 bg-parchment text-charcoal placeholder-charcoal-muted rounded-lg text-xs font-inter border border-brass/40 focus:outline-none focus:border-brass transition-all">
+                    </div>
+
+                    <button type="submit" class="px-6 py-3.5 bg-brass text-forest hover:bg-brass-light font-bold brand-font tracking-wider text-xs uppercase rounded-lg transition-all shadow-md whitespace-nowrap border border-brass-light/50 flex items-center justify-center gap-2">
+                        <span>Subscribe</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </form>
+
+                <!-- Trust / Privacy Note -->
+                <p class="text-[11px] text-center text-parchment/50 mt-4 font-inter">
+                    Published seasonally. No spam, just authentic countryside and industry perspective.
+                </p>
+
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer class="bg-forest-dark text-parchment py-8 border-t border-brass/30 text-center text-xs text-parchment/60">
         <p>&copy; 2026 Dawson Supply Co. | Dawson Industries. Herne Bay, Kent, UK</p>
@@ -349,7 +399,19 @@
         closeModalBtn.addEventListener('click', function () {
             modal.classList.add('hidden');
         });
+
+        <script>
+            const fieldNotesForm = document.getElementById('field-notes-form');
+            if (fieldNotesForm) {
+                fieldNotesForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for subscribing to Field Notes. You have been added to our seasonal dispatch list.');
+                fieldNotesForm.reset();
+                });
+            }
+        </script>
     </script>
 
+    
 </body>
 </html>
